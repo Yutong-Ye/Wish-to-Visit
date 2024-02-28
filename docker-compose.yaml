@@ -1,8 +1,15 @@
-# volumes:
+volumes:
+    pg-admin:
+        external: true
+
+    postgres-data:
+        external: true
+
 services:
     fastapi:
         environment:
             CORS_HOST: http://localhost:5173
+            DATABASE_URL: postgresql://wish-to-visit:wish-to-visit@postgres/wtv-db
         build:
             context: api
             dockerfile: Dockerfile.dev
@@ -23,3 +30,25 @@ services:
             VITE_API_HOST: http://localhost:8000
         ports:
             - "5173:5173"
+
+    pg-admin:
+        image: dpage/pgadmin4
+        volumes:
+            - pg-admin:/var/lib/pgadmin
+        ports:
+            - 8082:80
+        environment:
+            PGADMIN_DEFAULT_EMAIL: admin@pgadmin.com
+            PGADMIN_DEFAULT_PASSWORD: password
+            PGADMIN_DISABLE_POSTFIX: 1
+
+    postgres:
+        image: postgres:14.5-bullseye
+        volumes:
+            - postgres-data:/var/lib/postgresql/data
+        environment:
+            POSTGRES_PASSWORD: wish-to-visit
+            POSTGRES_USER: wish-to-visit
+            POSTGRES_DB: wtv-db
+        ports:
+            - 15432:5432
