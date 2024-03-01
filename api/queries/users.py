@@ -30,9 +30,7 @@ class UserRepository:
                     )
                     results = []
                     for record in cur:
-                        user = UserOut(
-                            userId=record[0], username=record[1]
-                        )
+                        user = UserOut(userId=record[0], username=record[1])
                         results.append(user)
                     return results
         except Exception:

@@ -7,6 +7,9 @@ services:
         environment:
             CORS_HOST: http://localhost:5173
             DATABASE_URL: postgresql://wtv:wtv@postgres/wtv
+            SIGNING_KEY: yv7pzYT-Q-ZlUlvcuITjNU4xsxEV63Dnx
+            WAIT_BEFORE: 5
+            WAIT_TIMEOUT: 60
         build:
             context: api
             dockerfile: Dockerfile.dev

@@ -3,13 +3,15 @@ steps = [
         # "Up" SQL statement
         """
         CREATE TABLE users (
-            id SERIAL PRIMARY KEY,
-            username VARCHAR (50) UNIQUE NOT NULL
+            user_id serial not null primary key,
+            name varchar(100) not null,
+            email varchar(50) not null unique,
+            hashed_password varchar(200) not null
         );
         """,
         # "Down" SQL statement
         """
         DROP TABLE users;
-        """
+        """,
     ]
 ]
