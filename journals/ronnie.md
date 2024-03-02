@@ -25,3 +25,20 @@ to the feature that we are removing. If not, dead code will be left in.
 We found out that we don't have to create a new project to change the name
 of the project. There is a place to change the pathways which avoids having
 to restart everything.
+git
+
+
+## February 26th, 2024 - March 1, 2024
+
+This week, I worked on:
+
+As a group we made the decision to use SQL database.
+Using SQL, I set up beekeeper studio and created a "users" table.
+Johnathan lead the work to create a POST and create the backend authentication.
+Yutong and I, followed and tinkered on our local branch to get hands on experience.
+
+## ah-ha! moment
+
+This week it took a bit to understand the relationship between fastapi, beekeeper, and migrations.
+After some time and some other tutorials, it clicked and everything started to make more sense.
+I was able to use all three to create a table and use a fastapi to get data from the database.
