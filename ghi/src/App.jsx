@@ -6,6 +6,7 @@ import HomePage from './HomePage'
 import Nav from './Nav'
 import SignupForm from './SignupForm'
 import LoginForm from './LoginForm'
+import Wishes from './CreateWishes'
 
 function App() {
     const baseUrl = import.meta.env.VITE_API_HOST
@@ -27,6 +28,7 @@ function App() {
                             path="/login"
                             element={<LoginForm />}
                         ></Route>
+                        <Route exact path="/wishes" element={<Wishes />} />
                     </Routes>
                 </div>
             </AuthProvider>
