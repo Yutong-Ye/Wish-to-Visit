@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from queries.pool import pool
+from jwtdown_fastapi.authentication import Token
 
 
 class Error(BaseModel):
@@ -11,26 +12,34 @@ class DuplicateAccountError(ValueError):
 
 
 class AccountIn(BaseModel):
-    name: str
+    username: str
     email: str
     password: str
 
 
 class AccountOut(BaseModel):
     user_id: int
-    name: str
+    username: str
     email: str
+
+
+class AccountToken(Token):
+    account: AccountOut
 
 
 class AccountOutWithPassword(AccountOut):
     hashed_password: str
 
 
+class AuthenticationException(Exception):
+    pass
+
+
 class AccountRepo:
     def record_to_account_out(self, record) -> AccountOutWithPassword:
         account_dict = {
             "user_id": record[0],
-            "name": record[1],
+            "username": record[1],
             "email": record[2],
             "hashed_password": record[3],
         }
@@ -48,19 +57,19 @@ class AccountRepo:
                     result = db.execute(
                         """
                         INSERT INTO users
-                            (name,
+                            (username,
                             email,
                             hashed_password)
                         VALUES
                             (%s, %s, %s)
                         RETURNING
                         user_id,
-                        name,
+                        username,
                         email,
                         hashed_password;
                         """,
                         [
-                            user.name,
+                            user.username,
                             user.email,
                             hashed_password,
                         ],
@@ -70,7 +79,7 @@ class AccountRepo:
                     print("ID GOTTEN", user_id)
                     return AccountOutWithPassword(
                         user_id=user_id,
-                        name=user.name,
+                        username=user.username,
                         email=user.email,
                         hashed_password=hashed_password,
                     )
@@ -87,7 +96,7 @@ class AccountRepo:
                         """
                         SELECT
                         user_id,
-                        name,
+                        username,
                         email,
                         hashed_password
                         FROM users
@@ -102,5 +111,3 @@ class AccountRepo:
                     return self.record_to_account_out(record)
         except Exception:
             return {"message": "Could not get account"}
-
-    pass

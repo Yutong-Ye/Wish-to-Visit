@@ -42,3 +42,16 @@ Yutong and I, followed and tinkered on our local branch to get hands on experien
 This week it took a bit to understand the relationship between fastapi, beekeeper, and migrations.
 After some time and some other tutorials, it clicked and everything started to make more sense.
 I was able to use all three to create a table and use a fastapi to get data from the database.
+
+
+## March 4, 2024 - March 8, 2024
+
+This week, I worked on:
+
+Created the backend and frontend for the login and signup. Created front end authorization.
+It took a bit to get used to how the frontend and backend interact with tokens. Was able to
+get the backend authorizations to work but during the creation of the frontend there was a
+few errors that popped up.
+
+Found out the error was due to jwtdown and were told to ignore it due to it not affecting
+the functionality of our application.
