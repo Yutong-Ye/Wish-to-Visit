@@ -38,3 +38,24 @@
 + # Mar 1st Fri
 - Using Trello to keep track of team's work. 
 - Updated yutong journal. 
+
+
+## Week 15
+
++ # Mar 4th Mon
+- Created Wish_list_table.
+- Blocker: RuntimeError: Incompatible migration history at 001.
+
++ # Mar 5th Tue
+- Fixed Incompatible migration history at 001.
+- Added jwt-decode and react-router-dom to package.json.
+
++ # Mar 6th Wed
+- Added backend Get/Post/Put/Delete functionalities with Pydantic data validation to the wishlist.
+
++ # Mar 7th Thu
+- Added created wishes table on React frontend with background style.
+
++ # Mar 8th Fri
+- Looking into the Backend Authentication issues.
+- Updated weekly journal.
