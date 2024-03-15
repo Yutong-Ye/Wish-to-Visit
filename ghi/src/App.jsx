@@ -7,6 +7,9 @@ import Nav from './Nav'
 import SignupForm from './SignupForm'
 import LoginForm from './LoginForm'
 import Wishes from './CreateWishes'
+import { Countries, CountryDetails, Search } from './components'
+
+export const AppContext = createContext(null)
 
 function App() {
     const baseUrl = import.meta.env.VITE_API_HOST
@@ -17,7 +20,11 @@ function App() {
                 <div className="container">
                     <Nav />
                     <Routes>
-                        <Route exact path="/" element={<HomePage />}></Route>
+                        <Route
+                            exact
+                            path="/home"
+                            element={<HomePage />}
+                        ></Route>
                         <Route
                             exact
                             path="/signup"
@@ -29,6 +36,15 @@ function App() {
                             element={<LoginForm />}
                         ></Route>
                         <Route exact path="/wishes" element={<Wishes />} />
+                        <Route path="/" element={<Countries />} />
+                        <Route
+                            path="/Countries/:country"
+                            element={<CountryDetails />}
+                        />
+                        <Route
+                            path="/search/:searchTerm"
+                            element={<Search />}
+                        />
                     </Routes>
                 </div>
             </AuthProvider>

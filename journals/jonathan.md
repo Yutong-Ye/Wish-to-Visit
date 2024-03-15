@@ -36,3 +36,31 @@ We discussed what the workflow will look like when we start working on our own s
 ##At least one ah-ha! moment that you had during your coding, however small
 
 Learning about the pipeline feature when making merge requests and how I need to follow flake8 practice despite what the documentation code has
+
+3/8/2024 - Friday
+
+##A list of features/issues that you worked on and who you worked with, if applicable
+
+Worked on back and frontend auth with Ronnie. Having an issue with logging in and receiving a 401 error.
+
+##A reflection on any design conversations that you had
+
+Because we were working on the backend the majority of the time and when we did work with the frontend it was all about functionality and not design in nature.
+
+##At least one ah-ha! moment that you had during your coding, however small
+
+Using the developer tools with more confidence and being able to troubleshoot and debug code.
+
+3/14/2024 - Thursday
+
+##A list of features/issues that you worked on and who you worked with, if applicable
+
+Conntecting to the REST Countries API and allowing for the data to show up on the frontend. Also implemented a search feature to filter down the country list.
+
+##A reflection on any design conversations that you had
+
+About if the countries should be rendered as cards in bootstrap or look into tailwind.
+
+##At least one ah-ha! moment that you had during your coding, however small
+
+Learning how to implement an API without explicit instructions.
