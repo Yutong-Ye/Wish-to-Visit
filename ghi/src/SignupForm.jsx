@@ -3,8 +3,6 @@ import useToken from '@galvanize-inc/jwtdown-for-react'
 import { useNavigate } from 'react-router-dom'
 
 const SignupForm = () => {
-    // console.log('API Host:', import.meta.env.VITE_API_HOST)
-
     const [username, setName] = useState('')
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
@@ -21,7 +19,7 @@ const SignupForm = () => {
         try{
           await register(accountData, `${import.meta.env.VITE_API_HOST}/api/accounts`)
           e.target.reset()
-          navigate('/')
+          navigate('/login')
         } catch(error) {
           console.error(error)
         }
@@ -33,9 +31,9 @@ const SignupForm = () => {
             <div className="card-body">
                 <form onSubmit={(e) => handleRegistration(e)}>
                     <div className="mb-3">
-                        <label className="form-label">name</label>
+                        <label className="form-label">Username</label>
                         <input
-                            name="name"
+                            name="username"
                             type="text"
                             className="form-control"
                             onChange={(e) => {
@@ -44,7 +42,7 @@ const SignupForm = () => {
                         />
                     </div>
                     <div className="mb-3">
-                        <label className="form-label">password</label>
+                        <label className="form-label">Password</label>
                         <input
                             name="password"
                             type="password"
@@ -55,7 +53,7 @@ const SignupForm = () => {
                         />
                     </div>
                     <div className="mb-3">
-                        <label className="form-label">email</label>
+                        <label className="form-label">Email</label>
                         <input
                             name="email"
                             type="text"
