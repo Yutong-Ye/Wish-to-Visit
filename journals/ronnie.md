@@ -55,3 +55,17 @@ few errors that popped up.
 
 Found out the error was due to jwtdown and were told to ignore it due to it not affecting
 the functionality of our application.
+
+## March 11, 2024 - March 14, 2024
+
+This week, I worked on:
+
+Created authorization verification and new login form for the home page. Created checks that showed
+the user different information on their webpages depending if they were logged in or not. At first
+I tried to create functions to pull the token from the cookie location until I realized that the
+galvanize library I was using for the token creation had everything I needed already to do what I
+wanted. All i needed to do was check if there was a token and return a boolean. Then used a isLoggedIn
+function to show the user the page they are authorized to see.
+
+What I learned:
+I should make sure to read what the libraries I'm using can do before trying to create a solution myself.
