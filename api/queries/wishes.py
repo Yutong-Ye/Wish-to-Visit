@@ -96,15 +96,12 @@ class WishRepo:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
-                    result = db.execute(
-                        """
-                        SELECT wish_id, wish_name, description, start_date, end_date, picture_url
-                        FROM wish
-                        WHERE wish_id = %s
-                        """,
+                    db.execute(
+                        "SELECT wish_id, wish_name, description, start_date, "
+                        "end_date, picture_url FROM wish WHERE wish_id = %s",
                         [wish_id],
                     )
-                    record = result.fetchone()
+                    record = db.fetchone()
                     return WishDetail(**record) if record else None
         except Exception as e:
             print(e)
