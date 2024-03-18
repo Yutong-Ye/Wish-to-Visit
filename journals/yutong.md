@@ -59,3 +59,23 @@
 + # Mar 8th Fri
 - Looking into the Backend Authentication issues.
 - Updated weekly journal.
+
+## Week 16
+
+-   # Mar 11th Mon
+
+*   Wishlist backend completed.
+*   Blocker: Cannot push my feature branch to GitLab.
+
+-   # Mar 12th Tue
+
+*   Integrated wishlist backend with frontend.
+*   Fixed blocker.
+
+-   # Mar 13th Wed
+
+*   Started CI/CD.
+
+-   # Mar 14th Thu
+
+*   Started writing unit tests for wishlist.
