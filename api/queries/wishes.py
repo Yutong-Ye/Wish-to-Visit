@@ -1,182 +1,161 @@
 from pydantic import BaseModel
-from typing import List, Union
+from typing import Optional, List
 from queries.pool import pool
+from datetime import datetime
+from fastapi import HTTPException
 
 
-# Define an error model to handle error messages
 class Error(BaseModel):
     message: str
 
 
-# Define a model for incoming wish data
 class WishIn(BaseModel):
-    destination: str
-    country: str
+    wish_name: str
     description: str
-    planned_date: str  # Assuming this is a string for simplicity
-    status: str
+    start_date: datetime
+    end_date: datetime
+    picture_url: str
 
 
-# Define a model for outgoing wish data
 class WishOut(BaseModel):
-    list_id: int
-    user_id: int
-    destination: str
-    country: str
+    wish_id: int
+    wish_name: str
     description: str
-    planned_date: str
-    status: str
+    start_date: datetime
+    end_date: datetime
+    picture_url: str
 
 
-# Define the repository class for handling wish data
-class WishRepository:
-    # Method to create a new wish
-    def create(self, wish: WishIn, user_id: int) -> WishOut:
+class WishList(BaseModel):
+    id: int
+    wish_name: str
+
+
+class WishDetail(BaseModel):
+    id: int
+    wish_name: str
+    description: str
+    start_date: datetime
+    end_date: datetime
+    picture_url: str
+
+
+class WishRepo:
+    def create(self, wish: WishIn) -> WishOut:
         with pool.connection() as conn:
             with conn.cursor() as db:
-                # Insert the new wish into the database
-                db.execute(
+                result = db.execute(
                     """
-                    INSERT INTO wishes(user_id, destination, country,
-                    description, planned_date, status)
-                    VALUES(%s, %s, %s, %s, %s, %s)
-                    RETURNING list_id;
+                    INSERT INTO wish
+                        (
+                            wish_name,
+                            description,
+                            start_date,
+                            end_date,
+                            picture_url
+                        )
+                    VALUES
+                        (%s, %s, %s, %s, %s)
+                    RETURNING wish_id
                     """,
                     [
-                        user_id,
-                        wish.destination,
-                        wish.country,
+                        wish.wish_name,
                         wish.description,
-                        wish.planned_date,
-                        wish.status,
+                        wish.start_date,
+                        wish.end_date,
+                        wish.picture_url,
                     ],
                 )
-                data = db.fetchone()
-                list_id = data[0]
+                id = result.fetchone()[0]
+                return WishOut(wish_id=id, **wish.dict())
 
-                if list_id is None:
-                    return None
-
-                # Return the newly created wish with its assigned list_id
-                return WishOut(
-                    list_id=list_id,
-                    user_id=user_id,
-                    destination=wish.destination,
-                    country=wish.country,
-                    description=wish.description,
-                    planned_date=wish.planned_date,
-                    status=wish.status,
-                )
-
-    # Method to retrieve all wishes for a given user
-    def get_wishes(self, user_id: int) -> Union[List[WishOut], Error]:
+    def get_all_wishes(self) -> List[WishList]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
-                    # Fetch all wishes belonging to the user
                     db.execute(
                         """
-                        SELECT list_id, user_id, destination, country,
-                        description, planned_date, status
-                        FROM wishes
-                        WHERE user_id = %s
-                        ORDER BY list_id;
-                        """,
-                        [user_id],
+                        SELECT wish_id, wish_name
+                        FROM wish
+                        """
                     )
-
-                    # Return a list of WishOut objects
                     return [
-                        WishOut(
-                            list_id=record[0],
-                            user_id=record[1],
-                            destination=record[2],
-                            country=record[3],
-                            description=record[4],
-                            planned_date=record[5],
-                            status=record[6],
+                        WishList(
+                            id=record[0],
+                            wish_name=record[1],
                         )
                         for record in db
                     ]
-
         except Exception as e:
             print(e)
-            return Error(message="Could not get wishes of user!!!")
+            raise HTTPException(
+                status_code=500, detail="Could not get list of wishes"
+            )
 
-    # Method to update an existing wish
-    def update_wish(self, wish_id: int, wish: WishIn) -> Union[WishOut, Error]:
+    def get_details(self, wish_id: int) -> Optional[WishDetail]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
-                    # Fetch the user_id for the given wish
-                    db.execute(
+                    result = db.execute(
                         """
-                        SELECT user_id
-                        FROM wishes
-                        WHERE list_id = %s
+                        SELECT wish_id, wish_name, description, start_date, end_date, picture_url
+                        FROM wish
+                        WHERE wish_id = %s
                         """,
                         [wish_id],
                     )
-                    user_id_data = db.fetchone()
-                    if user_id_data is None:
-                        return Error(message="Wish not found")
+                    record = result.fetchone()
+                    return WishDetail(**record) if record else None
+        except Exception as e:
+            print(e)
+            raise HTTPException(
+                status_code=500, detail="Could not get wish details"
+            )
 
-                    user_id = user_id_data[0]
-
-                    # Update the wish with the new data
+    def update(self, wish_id: int, wish: WishIn) -> Optional[WishOut]:
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
                     db.execute(
                         """
-                        UPDATE wishes
-                        SET destination = %s,
-                            country = %s,
+                        UPDATE wish
+                        SET wish_name = %s,
                             description = %s,
-                            planned_date = %s,
-                            status = %s
-                        WHERE list_id = %s
+                            start_date = %s,
+                            end_date = %s,
+                            picture_url = %s
+                        WHERE wish_id = %s
                         """,
                         [
-                            wish.destination,
-                            wish.country,
+                            wish.wish_name,
                             wish.description,
-                            wish.planned_date,
-                            wish.status,
+                            wish.start_date,
+                            wish.end_date,
+                            wish.picture_url,
                             wish_id,
                         ],
                     )
-
-                    # Return the updated wish
-                    return WishOut(
-                        list_id=wish_id,
-                        user_id=user_id,
-                        destination=wish.destination,
-                        country=wish.country,
-                        description=wish.description,
-                        planned_date=wish.planned_date,
-                        status=wish.status,
-                    )
+                    return WishOut(wish_id=wish_id, **wish.dict())
         except Exception as e:
             print(e)
-            return Error(message="Could not update that wish")
+            raise HTTPException(
+                status_code=500, detail="Could not update wish"
+            )
 
-
-# Method to delete an existing wish
-def delete_wish(self, wish_id: int) -> Union[bool, Error]:
-    try:
-        with pool.connection() as conn:
-            with conn.cursor() as db:
-                # Delete the wish from the database
-                db.execute(
-                    """
-                    DELETE FROM wishes
-                    WHERE list_id = %s
-                    """,
-                    [wish_id],
-                )
-        return True
-    except Error as e:
-        # Handle any errors that occur during the database operation
-        print(f"Error deleting wish: {e}")
-        return e
-    finally:
-        # Any necessary cleanup can go here
-        pass
+    def delete(self, wish_id: int) -> bool:
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    db.execute(
+                        """
+                        DELETE FROM wish
+                        WHERE wish_id = %s
+                        """,
+                        [wish_id],
+                    )
+                    return True
+        except Exception as e:
+            print(e)
+            raise HTTPException(
+                status_code=500, detail="Could not delete wish"
+            )

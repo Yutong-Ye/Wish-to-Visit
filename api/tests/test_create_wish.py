@@ -5,8 +5,10 @@ from authenticator import authenticator
 
 client = TestClient(app)
 
+
 def fake_get_current_account_data():
     return {"id": 1, "username": "testuser"}
+
 
 class CreateWishQueries:
     def create(self, wish: WishIn):
@@ -19,6 +21,7 @@ class CreateWishQueries:
             picture_url=wish.picture_url,
         )
 
+
 class EmptyWishRepository:
     def get(self, wish_id: int):
         assert wish_id == 1
@@ -30,6 +33,7 @@ class EmptyWishRepository:
             end_date="2024-01-31",
             picture_url="default.jpg",
         )
+
 
 def test_create_wish():
     # Arrange
@@ -61,6 +65,7 @@ def test_create_wish():
     # Assert
     assert response.status_code == 200
     assert response.json() == expected
+
 
 def test_get_a_wish():
     # Arrange
