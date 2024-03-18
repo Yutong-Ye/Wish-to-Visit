@@ -28,7 +28,7 @@ function Nav() {
                             Countries
                         </NavLink>
                         <NavLink className="navbar-brand" to="/wishes">
-                            Wishes
+                            Create Wishes
                         </NavLink>
                         <button
                             onClick={handleLogout}

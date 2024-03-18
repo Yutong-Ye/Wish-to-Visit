@@ -1,31 +1,13 @@
 import React, { useEffect, useState } from 'react'
-// import useToken from '@galvanize-inc/jwtdown-for-react'
-
-// const { token } = useToken()
-
-// useEffect(() => {
-//     if (token) {
-//         fetch('http://localhost:8000/wishes', {
-//             headers: {
-//                 Authorization: `Bearer ${token}`,
-//             },
-//         })
-//             .then((response) => response.json())
-//             .then((data) => setWishes(data))
-//             .catch((error) =>
-//                 console.error('Error fetching wishes:', error)
-//             )
-//     }
-// }, [token])
 
 function Wishes() {
     const [wishes, setWishes] = useState([])
     const [newWish, setNewWish] = useState({
-        destination: '',
-        country: '',
+        wish_name: '',
         description: '',
-        planned_date: '',
-        status: '',
+        start_date: '',
+        end_date: '',
+        picture_url: '',
     })
 
     const handleInputChange = (event) => {
@@ -34,15 +16,15 @@ function Wishes() {
 
     const handleFormSubmit = (event) => {
         event.preventDefault()
-        if (!newWish.destination) return
+        if (!newWish.wish_name || !newWish.description) return
 
-        setWishes([...wishes, { ...newWish, list_id: wishes.length + 1 }])
+        setWishes([...wishes, { ...newWish, wish_id: wishes.length + 1 }])
         setNewWish({
-            destination: '',
-            country: '',
+            wish_name: '',
             description: '',
-            planned_date: '',
-            status: '',
+            start_date: '',
+            end_date: '',
+            picture_url: '',
         })
     }
 
@@ -57,63 +39,66 @@ function Wishes() {
                                 <div className="form-floating mb-3">
                                     <input
                                         type="text"
-                                        name="destination"
-                                        value={newWish.destination}
+                                        name="wish_name"
+                                        value={newWish.wish_name}
                                         onChange={handleInputChange}
-                                        placeholder="Destination"
+                                        placeholder="Wish Name"
                                         className="form-control"
                                     />
-                                    <label htmlFor="destination"></label>
+                                    <label htmlFor="wish_name">Wish Name</label>
                                 </div>
                                 <div className="form-floating mb-3">
-                                    <input
-                                        type="text"
-                                        name="country"
-                                        value={newWish.country}
-                                        onChange={handleInputChange}
-                                        placeholder="Country"
-                                        className="form-control"
-                                    />
-                                    <label htmlFor="country"></label>
-                                </div>
-                                <div className="form-floating mb-3">
-                                    <input
-                                        type="text"
+                                    <textarea
                                         name="description"
                                         value={newWish.description}
                                         onChange={handleInputChange}
                                         placeholder="Description"
                                         className="form-control"
                                     />
-                                    <label htmlFor="description"></label>
+                                    <label htmlFor="description">
+                                        Description
+                                    </label>
+                                </div>
+                                <div className="form-floating mb-3">
+                                    <input
+                                        type="date"
+                                        name="start_date"
+                                        value={newWish.start_date}
+                                        onChange={handleInputChange}
+                                        className="form-control"
+                                    />
+                                    <label htmlFor="start_date">
+                                        Start Date
+                                    </label>
+                                </div>
+                                <div className="form-floating mb-3">
+                                    <input
+                                        type="date"
+                                        name="end_date"
+                                        value={newWish.end_date}
+                                        onChange={handleInputChange}
+                                        className="form-control"
+                                    />
+                                    <label htmlFor="end_date">End Date</label>
                                 </div>
                                 <div className="form-floating mb-3">
                                     <input
                                         type="text"
-                                        name="planned_date"
-                                        value={newWish.planned_date}
+                                        name="picture_url"
+                                        value={newWish.picture_url}
                                         onChange={handleInputChange}
-                                        placeholder="Planned Date"
+                                        placeholder="Picture URL"
                                         className="form-control"
                                     />
-                                    <label htmlFor="planned_date"></label>
-                                </div>
-                                <div className="form-floating mb-3">
-                                    <input
-                                        type="text"
-                                        name="status"
-                                        value={newWish.status}
-                                        onChange={handleInputChange}
-                                        placeholder="Status"
-                                        className="form-control"
-                                    />
-                                    <label htmlFor="status"></label>
+                                    <label htmlFor="picture_url">
+                                        Picture URL
+                                    </label>
                                 </div>
                                 <button
                                     type="submit"
                                     className="btn btn-primary"
                                 >
-                                    Create new wish
+                                    Create New Wish
                                 </button>
                             </form>
                         </div>
@@ -123,4 +108,5 @@ function Wishes() {
         </>
     )
 }
+
 export default Wishes
