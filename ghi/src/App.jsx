@@ -21,11 +21,7 @@ function App() {
                 <div className="container">
                     <Nav />
                     <Routes>
-                        <Route
-                            exact
-                            path="/home"
-                            element={<HomePage />}
-                        ></Route>
+                        <Route exact path="/" element={<HomePage />}></Route>
                         <Route
                             exact
                             path="/signup"
@@ -37,9 +33,9 @@ function App() {
                             element={<LoginForm />}
                         ></Route>
                         <Route exact path="/wishes" element={<Wishes />} />
-                        <Route path="/" element={<Countries />} />
+                        <Route path="/countries" element={<Countries />} />
                         <Route
-                            path="/Countries/:country"
+                            path="/countries/:country"
                             element={<CountryDetails />}
                         />
                         <Route
