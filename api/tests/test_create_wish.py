@@ -1,6 +1,7 @@
 from fastapi.testclient import TestClient
 from main import app
 from queries.wishes import WishRepo, WishIn, WishOut
+
 from authenticator import authenticator
 
 client = TestClient(app)

@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import useToken from '@galvanize-inc/jwtdown-for-react'
 
 function Wishes() {
-    const [wishes, setWishes] = useState([])
+    const { token } = useToken()
+    const navigate = useNavigate()
+
     const [newWish, setNewWish] = useState({
         wish_name: '',
         description: '',
@@ -14,19 +18,26 @@ function Wishes() {
         setNewWish({ ...newWish, [event.target.name]: event.target.value })
     }
 
-    const handleFormSubmit = (event) => {
+    const handleFormSubmit = async (event) => {
         event.preventDefault()
         if (!newWish.wish_name || !newWish.description) return
+        const createWishUrl = `http://localhost:8000/wishes`
+        const fetchConfig = {
+            method: 'post',
+            body: JSON.stringify(newWish),
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+        }
 
-        setWishes([...wishes, { ...newWish, wish_id: wishes.length + 1 }])
-        setNewWish({
-            wish_name: '',
-            description: '',
-            start_date: '',
-            end_date: '',
-            picture_url: '',
-        })
-    }
+        const response = await fetch(createWishUrl, fetchConfig)
+        if (response.ok) {
+            navigate('/wishList')
+        } else {
+            console.error('Failed to create a new wish')
+        }
+    };
 
     return (
         <>
