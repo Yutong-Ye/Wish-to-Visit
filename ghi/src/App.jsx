@@ -9,7 +9,8 @@ import SignupForm from './SignupForm'
 import LoginForm from './LoginForm'
 import Wishes from './CreateWishes'
 import WishList from './Wishlist'
-import { Countries, CountryDetails, Search } from './components'
+import Counter from './Counter'
+import { Countries, CountryDetails, Search } from './Countries/components'
 
 export const AppContext = createContext(null)
 
@@ -45,6 +46,7 @@ function App() {
                             element={<Search />}
                         />
                     </Routes>
+                    <Counter />
                 </div>
             </AuthProvider>
         </BrowserRouter>

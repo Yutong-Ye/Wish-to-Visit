@@ -57,7 +57,7 @@ const CountryDetails = () => {
 
     return (
         <Box sx={{ marginInline: { md: '3rem', lg: '5rem', xs: '1rem' } }}>
-            <Link to="/" aria-label="home page">
+            <Link to="/countries" aria-label="home page">
                 <Paper
                     sx={{
                         display: 'inline-block',
