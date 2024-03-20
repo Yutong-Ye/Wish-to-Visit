@@ -9,8 +9,8 @@ function Wishes() {
     const [newWish, setNewWish] = useState({
         wish_name: '',
         description: '',
-        start_date: '',
-        end_date: '',
+        start_date: null,
+        end_date: null,
         picture_url: '',
     })
 
@@ -23,7 +23,7 @@ function Wishes() {
         if (!newWish.wish_name || !newWish.description) return
         const createWishUrl = `http://localhost:8000/wishes`
         const fetchConfig = {
-            method: 'post',
+            method: 'POST',
             body: JSON.stringify(newWish),
             headers: {
                 'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ function Wishes() {
         } else {
             console.error('Failed to create a new wish')
         }
-    };
+    }
 
     return (
         <>

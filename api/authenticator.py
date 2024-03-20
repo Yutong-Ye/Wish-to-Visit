@@ -23,4 +23,6 @@ class ExampleAuthenticator(Authenticator):
         return account.__getitem__("hashed_password")
 
 
-authenticator = ExampleAuthenticator(os.environ["SIGNING_KEY"])
+authenticator = ExampleAuthenticator(
+    os.environ.get("SIGNING_KEY", default="default_key")
+)

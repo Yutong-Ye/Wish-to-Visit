@@ -79,3 +79,21 @@
 -   # Mar 14th Thu
 
 *   Started writing unit tests for wishlist.
+
+
+## Week 17
+
+-   # Mar 18th Mon
+
+*   Fixed my create wishes frontend and wishlist frontend.
+*   Added .gitlab-ci.yml deployment flie. 
+
+-   # Mar 19th Mon
+
+*   Fixed my wish unit test.
+*   Fixed style and linting for wishes frontend backend and unit test to pass the pipline. 
+
+-   # Mar 20th Wed
+
+*   Continue to work on deployment. 
+*   Adding Bootstrap CSS styling. 

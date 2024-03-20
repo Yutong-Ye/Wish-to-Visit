@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from typing import Optional, List
 from queries.pool import pool
-from datetime import datetime
+from datetime import date
 from fastapi import HTTPException
 
 
@@ -12,8 +12,8 @@ class Error(BaseModel):
 class WishIn(BaseModel):
     wish_name: str
     description: str
-    start_date: datetime
-    end_date: datetime
+    start_date: date
+    end_date: date
     picture_url: str
 
 
@@ -21,22 +21,8 @@ class WishOut(BaseModel):
     wish_id: int
     wish_name: str
     description: str
-    start_date: datetime
-    end_date: datetime
-    picture_url: str
-
-
-class WishList(BaseModel):
-    id: int
-    wish_name: str
-
-
-class WishDetail(BaseModel):
-    id: int
-    wish_name: str
-    description: str
-    start_date: datetime
-    end_date: datetime
+    start_date: date
+    end_date: date
     picture_url: str
 
 
@@ -44,7 +30,7 @@ class WishRepo:
     def create(self, wish: WishIn) -> WishOut:
         with pool.connection() as conn:
             with conn.cursor() as db:
-                result = db.execute(
+                db.execute(
                     """
                     INSERT INTO wish
                         (
@@ -66,23 +52,28 @@ class WishRepo:
                         wish.picture_url,
                     ],
                 )
-                id = result.fetchone()[0]
+                id = db.fetchone()[0]
                 return WishOut(wish_id=id, **wish.dict())
 
-    def get_all_wishes(self) -> List[WishList]:
+    def get_all_wishes(self) -> List[WishOut]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
                     db.execute(
                         """
-                        SELECT wish_id, wish_name
+                        SELECT
+                            *
                         FROM wish
                         """
                     )
                     return [
-                        WishList(
-                            id=record[0],
+                        WishOut(
+                            wish_id=record[0],
                             wish_name=record[1],
+                            description=record[2],
+                            start_date=record[3],
+                            end_date=record[4],
+                            picture_url=record[5],
                         )
                         for record in db
                     ]
@@ -92,7 +83,7 @@ class WishRepo:
                 status_code=500, detail="Could not get list of wishes"
             )
 
-    def get_details(self, wish_id: int) -> Optional[WishDetail]:
+    def get_details(self, wish_id: int) -> Optional[WishOut]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
@@ -102,7 +93,7 @@ class WishRepo:
                         [wish_id],
                     )
                     record = db.fetchone()
-                    return WishDetail(**record) if record else None
+                    return WishOut(**record) if record else None
         except Exception as e:
             print(e)
             raise HTTPException(

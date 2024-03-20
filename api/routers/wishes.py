@@ -5,8 +5,6 @@ from queries.wishes import (
     Error,
     WishIn,
     WishOut,
-    WishList,
-    WishDetail,
     WishRepo,
 )
 
@@ -23,7 +21,7 @@ def create_wish(
     return repo.create(wish)
 
 
-@router.get("/wishes", response_model=Union[Error, List[WishList]])
+@router.get("/wishes", response_model=Union[Error, List[WishOut]])
 def get_all_wishes(
     repo: WishRepo = Depends(),
     account_data: dict = Depends(authenticator.get_current_account_data),
@@ -31,12 +29,12 @@ def get_all_wishes(
     return repo.get_all_wishes()
 
 
-@router.get("/wishes/{wish_id}", response_model=Union[WishDetail, Error])
+@router.get("/wishes/{wish_id}", response_model=Union[WishOut, Error])
 def get_wish_details(
     wish_id: int,
     repo: WishRepo = Depends(),
     account_data: dict = Depends(authenticator.get_current_account_data),
-) -> Union[WishDetail, Error]:
+) -> Union[WishOut, Error]:
     return repo.get_details(wish_id)
 
 

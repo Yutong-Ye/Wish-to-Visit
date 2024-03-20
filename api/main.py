@@ -10,6 +10,7 @@ from queries.accounts import (
     AuthenticationException,
 )
 
+
 app = FastAPI()
 app.include_router(users.router)
 app.include_router(accounts.router)
