@@ -1,5 +1,6 @@
 import React from 'react'
 import Carousel from 'better-react-carousel'
+import { Link } from 'react-router-dom'
 
 const Gallery = () => {
     return (
