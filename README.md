@@ -1,8 +1,28 @@
 # Wish to Visit
 
+## Designed by:
+
+[Jonathan Spannring ](https://gitlab.com/jonathan.spannring) | [Ronnie Reif](https://gitlab.com/ronnielreif) | [Yutong Ye](https://gitlab.com/Yutong-Irene-Ye)
+
 ## Introduction
 
 The Wishlist platform is a delightful space where users can manifest their desires by creating and managing personalized wishlists. It's designed to bring joy and organization to the process of goal-setting and dreaming big. With intuitive features for managing wishes, the platform is both a practical tool and a source of inspiration.
+
+## Features
+
+-   User Authentication: Secure login and registration functionality to protect user accounts.
+-   Wishlist Management: Users can create, view, and delete wishes, making it easy to keep track of their goals and aspirations.
+-   Country Information: Provides users with information about various countries, enriching their wishlist experience.
+
+## Technologies Used
+
+-   Frontend: React.js for a dynamic and responsive user interface.
+-   Backend: FastAPI for a high-performance, easy-to-use framework.
+-   Database: PostgreSQL for reliable and efficient data storage.
+-   Containerization: Docker for easy deployment and environment consistency.
+
+## Wireframe
+- https://excalidraw.com/#room=a73ee2397d26aab63da9,aktQ-JqJT1lskIksYmPCPg
 
 ## Install Extensions
 
@@ -11,29 +31,39 @@ The Wishlist platform is a delightful space where users can manifest their desir
 
 ## For Registered Users:
 
+-   View country information.
 -   Manage Wishes: Create, view, and delete wishes from your personalized list.
 
-## For Registered Users:
+## For All Users:
 
 -   View country information.
 
 ## Project Initialization
 
--   Clone the repository to your local machine.
--   Navigate into the project directory.
--   Create a persistent Docker volume with docker volume create wtv.
--   Build the Docker environment with docker compose build.
--   Launch the application using docker compose up.
+-   Start by cloning the repository, navigate to https://gitlab.com/sry-wtv/wish-to-visit
+-   Enter the project directory by navigating to it.
+-   Set up a persistent Docker volume using the command docker volume create ???wtv.
+-   Construct the Docker environment by executing docker compose build.
+-   Initiate the application with the command docker compose up.
 
-### Viewing FastAPI Docs and React Front End
+### Viewing React Front End and FastAPI Docs
 
--   To view the React-based frontend, navigate to https://sry-wtv.gitlab.io/wish-to-visit/ in your internet browser.
--   Since the frontend utilizes React, the React Google Chrome extensions allow for viewing the store and state in the JavaScript console.
+-   To view the React frontend, navigate to https://sry-wtv.gitlab.io/wish-to-visit/ in your internet browser.
+-   To view the FastAPI docs, navigate to http://localhost:8000/docs#/ in your internet browser.
 
 ### React Routes
 
--   Home Page (/): A welcoming landing page that introduces you to the Wishlist platform.
--   Signup (/signup): Register for a Wishlist account.
--   Login (/login): Sign in to your Wishlist account.
--   Create Wishes (/wishes): Create the wishes and redirects to the Wishlist upon submission.
--   Wishes (/wishes/:wish_id): View/Delete a specific wish.
+-   **Home Page** `http://localhost:5173`
+    -   Landing/ Homepage that welcomes you to the next adventure
+-   **Signup** `http://localhost:5173/signup`
+    -   Sign up for an account
+-   **Login** `http://localhost:5173/login`
+    -   Log in to your account
+-   **MyProfile** `????`
+    -   View a list of the wishes that you have added to your profile
+-   **Create Wishes Form** `http://localhost:5173/wishes`
+    -   Once you submit the form to create wish, automatically directs you back to view wishlist page
+-   **View Wishlist Form** `http://localhost:5173/wishlist`
+    -   View your wishlist  
+
+

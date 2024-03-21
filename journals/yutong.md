@@ -1,64 +1,74 @@
-
-
-
 ## Week 13
 
-+ # Feb 19th Mon 
-- Initial project brainstorming is done collectively within the team.
+-   # Feb 19th Mon
 
-+ # Feb 20th Tue
-- The project name, logo, and key decisions are collectively determined by the team.
+*   Initial project brainstorming is done collectively within the team.
 
-+ # Feb 21th Wed
-- A new team was created on GitLab, and the repository was forked for collaborative development.
-- Work on wireframes and endpoints began as a group effort.
+-   # Feb 20th Tue
 
-+ # Feb 22th Thu
-- Received feedbacks on improvements for Wireframes and endpints. 
+*   The project name, logo, and key decisions are collectively determined by the team.
 
-+ # Feb 23th Fri
-- Updated Wireframes and endpints. 
-- Created and merge yutong.md to main. 
+-   # Feb 21th Wed
+
+*   A new team was created on GitLab, and the repository was forked for collaborative development.
+*   Work on wireframes and endpoints began as a group effort.
+
+-   # Feb 22th Thu
+
+*   Received feedbacks on improvements for Wireframes and endpints.
+
+-   # Feb 23th Fri
+
+*   Updated Wireframes and endpints.
+*   Created and merge yutong.md to main.
 
 ## Week 14
 
-+ # Jan 26 Mon
-- As a group, we decided to use PostgreSQL for our database.
+-   # Jan 26 Mon
 
-+ # Jan 27 Tue
-- Agreed as a team to utilize Beekeeper Studio and set up the docker-compose.yaml flie.
+*   As a group, we decided to use PostgreSQL for our database.
 
-+ # Jan 28 Wed
+-   # Jan 27 Tue
 
-- Created a query set in Beekeeper Studio.
+*   Agreed as a team to utilize Beekeeper Studio and set up the docker-compose.yaml flie.
 
-+ # Jan 29 thu
-- Mod programming with user table and user autentications. 
+-   # Jan 28 Wed
 
-+ # Mar 1st Fri
-- Using Trello to keep track of team's work. 
-- Updated yutong journal. 
+*   Created a query set in Beekeeper Studio.
 
+-   # Jan 29 thu
+
+*   Mod programming with user table and user autentications.
+
+-   # Mar 1st Fri
+
+*   Using Trello to keep track of team's work.
+*   Updated yutong journal.
 
 ## Week 15
 
-+ # Mar 4th Mon
-- Created Wish_list_table.
-- Blocker: RuntimeError: Incompatible migration history at 001.
+-   # Mar 4th Mon
 
-+ # Mar 5th Tue
-- Fixed Incompatible migration history at 001.
-- Added jwt-decode and react-router-dom to package.json.
+*   Created Wish_list_table.
+*   Blocker: RuntimeError: Incompatible migration history at 001.
 
-+ # Mar 6th Wed
-- Added backend Get/Post/Put/Delete functionalities with Pydantic data validation to the wishlist.
+-   # Mar 5th Tue
 
-+ # Mar 7th Thu
-- Added created wishes table on React frontend with background style.
+*   Fixed Incompatible migration history at 001.
+*   Added jwt-decode and react-router-dom to package.json.
 
-+ # Mar 8th Fri
-- Looking into the Backend Authentication issues.
-- Updated weekly journal.
+-   # Mar 6th Wed
+
+*   Added backend Get/Post/Put/Delete functionalities with Pydantic data validation to the wishlist.
+
+-   # Mar 7th Thu
+
+*   Added created wishes table on React frontend with background style.
+
+-   # Mar 8th Fri
+
+*   Looking into the Backend Authentication issues.
+*   Updated weekly journal.
 
 ## Week 16
 
@@ -80,20 +90,31 @@
 
 *   Started writing unit tests for wishlist.
 
-
 ## Week 17
 
 -   # Mar 18th Mon
 
 *   Fixed my create wishes frontend and wishlist frontend.
-*   Added .gitlab-ci.yml deployment flie. 
+*   Added .gitlab-ci.yml deployment flie.
 
 -   # Mar 19th Mon
 
 *   Fixed my wish unit test.
-*   Fixed style and linting for wishes frontend backend and unit test to pass the pipline. 
+*   Fixed style and linting for wishes frontend backend and unit test to pass the pipline.
 
 -   # Mar 20th Wed
 
-*   Continue to work on deployment. 
-*   Adding Bootstrap CSS styling. 
+*   Continue to work on deployment.
+*   Adding Bootstrap CSS styling.
+
+-   # Mar 21th Thu
+
+*   Continue to work on deployment.
+*   Adding Bootstrap CSS styling.
+*   Adding documentation/README.
+
+-   # Mar 22th Fri
+
+*   Finalize style change.
+*   Finalize deployment.
+*   Group presentation.
