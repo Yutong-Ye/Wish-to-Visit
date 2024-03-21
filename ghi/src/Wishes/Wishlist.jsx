@@ -25,7 +25,7 @@ function Wishlist() {
     }
 
     const handleDeleteWish = async (wishId) => {
-        const deleteWishUrl = `${import.meta.env.VITE_API_HOST}/${wishId}`
+        const deleteWishUrl = `${import.meta.env.VITE_API_HOST}/wishes/${wishId}`
         const fetchConfig = {
             method: 'DELETE',
             headers: {

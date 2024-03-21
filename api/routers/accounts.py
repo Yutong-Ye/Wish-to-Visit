@@ -1,4 +1,3 @@
-# router.py
 from fastapi import (
     Depends,
     HTTPException,
@@ -22,6 +21,12 @@ from queries.accounts import (
 
 class AccountForm(BaseModel):
     username: str
+    password: str
+
+
+class AccountUpdateForm(BaseModel):
+    username: str
+    email: str
     password: str
 
 
@@ -82,3 +87,53 @@ async def create_account(
     token = await authenticator.login(response, request, form, repo)
     print("token", token)
     return AccountToken(account=account, **token.dict())
+
+
+@router.get("/api/accounts/me", response_model=AccountOut)
+async def get_current_account(
+    account_data: dict = Depends(authenticator.get_current_account_data),
+    repo: AccountRepo = Depends(),
+):
+    if not account_data:
+        raise HTTPException(status_code=404, detail="Account not found")
+
+    email = account_data.get("email")
+    if not email:
+        raise HTTPException(
+            status_code=404, detail="Email not found in account data"
+        )
+
+    account_details = repo.get(email)
+    if not account_details:
+        raise HTTPException(
+            status_code=404, detail="Account details not found"
+        )
+
+    return AccountOut(
+        user_id=account_data["user_id"],
+        username=account_data["username"],
+        email=account_details["email"],
+    )
+
+
+@router.put("/api/user/{user_id}")
+async def update_account(
+    user_id: int,
+    update_info: AccountUpdateForm,
+    repo: AccountRepo = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
+):
+    if not account_data or account_data.get("user_id") != user_id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="You are not authorized to update this account.",
+        )
+    hashed_password = authenticator.hash_password(update_info.password)
+    success = repo.update(
+        user_id, update_info.username, update_info.email, hashed_password
+    )
+    if not success:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Account not found."
+        )
+    return None

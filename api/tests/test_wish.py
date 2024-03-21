@@ -39,9 +39,9 @@ class FakeWishRepo:
 
 def test_get_all_wishes():
     app.dependency_overrides[WishRepo] = FakeWishRepo
-    app.dependency_overrides[
-        authenticator.get_current_account_data
-    ] = fake_get_current_account_data
+    app.dependency_overrides[authenticator.get_current_account_data] = (
+        fake_get_current_account_data
+    )
 
     response = client.get("/wishes")
 
@@ -53,9 +53,9 @@ def test_get_all_wishes():
 
 def test_get_wish_details():
     app.dependency_overrides[WishRepo] = FakeWishRepo
-    app.dependency_overrides[
-        authenticator.get_current_account_data
-    ] = fake_get_current_account_data
+    app.dependency_overrides[authenticator.get_current_account_data] = (
+        fake_get_current_account_data
+    )
     wish_id_to_get = 1
 
     url = f"/wishes/{wish_id_to_get}"
@@ -77,9 +77,9 @@ def test_get_wish_details():
 
 def test_update_wish():
     app.dependency_overrides[WishRepo] = FakeWishRepo
-    app.dependency_overrides[
-        authenticator.get_current_account_data
-    ] = fake_get_current_account_data
+    app.dependency_overrides[authenticator.get_current_account_data] = (
+        fake_get_current_account_data
+    )
     wish_id_to_update = 1
     update_data = {
         "wish_name": "Updated Wish",
@@ -104,9 +104,9 @@ def test_update_wish():
 
 def test_delete_wish():
     app.dependency_overrides[WishRepo] = FakeWishRepo
-    app.dependency_overrides[
-        authenticator.get_current_account_data
-    ] = fake_get_current_account_data
+    app.dependency_overrides[authenticator.get_current_account_data] = (
+        fake_get_current_account_data
+    )
     wish_id_to_delete = 1
 
     response = client.delete(f"/wishes/{wish_id_to_delete}")

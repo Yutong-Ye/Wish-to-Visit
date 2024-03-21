@@ -56,9 +56,15 @@ function Nav() {
                         >
                             Wishes
                         </NavLink>
+                        <NavLink
+                            className="navbar-brand navbar-text-black"
+                            to="/settings"
+                        >
+                            Settings
+                        </NavLink>
                         <button
                             onClick={handleLogout}
-                            className="btn btn-outline-light"
+                            className="navbar-brand navbar-text-black"
                         >
                             Logout
                         </button>

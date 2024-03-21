@@ -43,8 +43,9 @@ async def get_user(
 @app.get("/token")
 async def get_by_cookie(
     request: Request,
-    account_data: dict
-    | None = Depends(authenticator.try_get_current_account_data),
+    account_data: dict | None = Depends(
+        authenticator.try_get_current_account_data
+    ),
     accounts: AccountRepo = Depends(),
     ra=Depends(authenticator.get_current_account_data),
 ) -> AccountToken:

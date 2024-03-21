@@ -13,6 +13,8 @@ import Counter from './Counter'
 import VisitList from './Visit/VisitList'
 import Visit from './Visit/CreateVisits'
 import { Countries, CountryDetails, Search } from './Countries/components'
+import UserSettings from './UserSettings'
+import UserSettingsEdit from './UserSettingsEdit'
 
 export const AppContext = createContext(null)
 
@@ -53,6 +55,8 @@ function App() {
                             path="/search/:searchTerm"
                             element={<Search />}
                         />
+                        <Route exact path="/settings" element={<UserSettings />}></Route>
+                        <Route exact path="/settings/edit" element={<UserSettingsEdit />}></Route>
                     </Routes>
                     <Counter />
                 </div>

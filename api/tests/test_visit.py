@@ -39,9 +39,9 @@ class FakeVisitRepo:
 
 def test_get_all_visits():
     app.dependency_overrides[VisitRepo] = FakeVisitRepo
-    app.dependency_overrides[
-        authenticator.get_current_account_data
-    ] = fake_get_current_account_data
+    app.dependency_overrides[authenticator.get_current_account_data] = (
+        fake_get_current_account_data
+    )
 
     response = client.get("/visit")
 
@@ -53,9 +53,9 @@ def test_get_all_visits():
 
 def test_get_visit_details():
     app.dependency_overrides[VisitRepo] = FakeVisitRepo
-    app.dependency_overrides[
-        authenticator.get_current_account_data
-    ] = fake_get_current_account_data
+    app.dependency_overrides[authenticator.get_current_account_data] = (
+        fake_get_current_account_data
+    )
     visit_id_to_get = 1
 
     url = f"/visit/{visit_id_to_get}"
@@ -77,9 +77,9 @@ def test_get_visit_details():
 
 def test_update_visit():
     app.dependency_overrides[VisitRepo] = FakeVisitRepo
-    app.dependency_overrides[
-        authenticator.get_current_account_data
-    ] = fake_get_current_account_data
+    app.dependency_overrides[authenticator.get_current_account_data] = (
+        fake_get_current_account_data
+    )
     visit_id_to_update = 1
     update_data = {
         "visit_name": "Updated Visit",
@@ -104,9 +104,9 @@ def test_update_visit():
 
 def test_delete_visit():
     app.dependency_overrides[VisitRepo] = FakeVisitRepo
-    app.dependency_overrides[
-        authenticator.get_current_account_data
-    ] = fake_get_current_account_data
+    app.dependency_overrides[authenticator.get_current_account_data] = (
+        fake_get_current_account_data
+    )
     visit_id_to_delete = 1
 
     response = client.delete(f"/visit/{visit_id_to_delete}")
