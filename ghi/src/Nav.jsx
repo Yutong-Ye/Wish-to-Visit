@@ -17,27 +17,44 @@ function Nav() {
     }
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-success">
+        <nav
+            className="navbar navbar-expand-lg navbar-dark custom-navbar"
+            style={{ backgroundColor: 'transparent' }}
+        >
             <div className="container-fluid">
-                <NavLink className="navbar-brand" to="/">
+                <button
+                    className="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <NavLink className="navbar-brand navbar-text-black" to="/">
                     Home
                 </NavLink>
                 {isLoggedIn ? (
                     <>
-                        <NavLink className="navbar-brand" to="/countries">
+                        <NavLink
+                            className="navbar-brand navbar-text-black"
+                            to="/countries"
+                        >
                             Countries
                         </NavLink>
-                        <NavLink className="navbar-brand" to="/wishes">
+                        <NavLink
+                            className="navbar-brand navbar-text-black"
+                            to="/wishes"
+                        >
                             Create Wishes
                         </NavLink>
-                        <NavLink className="navbar-brand" to="/wishlist">
+                        <NavLink
+                            className="navbar-brand navbar-text-black"
+                            to="/wishlist"
+                        >
                             Wishes
-                        </NavLink>
-                        <NavLink className="navbar-brand" to="/visit">
-                            Track Visits
-                        </NavLink>
-                        <NavLink className="navbar-brand" to="/visitlist">
-                            Visits
                         </NavLink>
                         <button
                             onClick={handleLogout}
@@ -48,10 +65,16 @@ function Nav() {
                     </>
                 ) : (
                     <>
-                        <NavLink className="navbar-brand" to="/signup">
+                        <NavLink
+                            className="navbar-brand navbar-text-black"
+                            to="/signup"
+                        >
                             Sign Up
                         </NavLink>
-                        <NavLink className="navbar-brand" to="/login">
+                        <NavLink
+                            className="navbar-brand navbar-text-black"
+                            to="/login"
+                        >
                             Login
                         </NavLink>
                     </>
