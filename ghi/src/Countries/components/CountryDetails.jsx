@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import { fetchFromAPI } from '../assets/fetchFromAPI'
 import { MdOutlineKeyboardBackspace } from 'react-icons/md'
 import { useParams, Link } from 'react-router-dom'
+import WishButton from './WishButton'
+import VisitButton from './VisitButton'
 
 const CountryDetails = () => {
     const [countryDetail, setCountryDetail] = useState(null)
@@ -309,6 +311,8 @@ const CountryDetails = () => {
                                       ))
                                     : 'No border'}
                             </Typography>
+                            <WishButton />
+                            <VisitButton />
                         </Box>
                     </>
                 ) : (

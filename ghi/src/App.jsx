@@ -10,6 +10,8 @@ import LoginForm from './LoginForm'
 import Wishes from './CreateWishes'
 import WishList from './Wishlist'
 import Counter from './Counter'
+import VisitList from './VisitList'
+import Visit from './CreateVisits'
 import { Countries, CountryDetails, Search } from './Countries/components'
 
 export const AppContext = createContext(null)
@@ -36,6 +38,12 @@ function App() {
                         ></Route>
                         <Route exact path="/wishes" element={<Wishes />} />
                         <Route exact path="/wishlist" element={<WishList />} />
+                        <Route exact path="/visit" element={<Visit />} />
+                        <Route
+                            exact
+                            path="/visitlist"
+                            element={<VisitList />}
+                        />
                         <Route path="/countries" element={<Countries />} />
                         <Route
                             path="/countries/:country"

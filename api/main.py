@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Depends, HTTPException, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 import os
-from routers import users, accounts, wishes
+from routers import users, accounts, wishes, visit
 from authenticator import authenticator
 from queries.accounts import (
     AccountRepo,
@@ -16,6 +16,7 @@ app.include_router(users.router)
 app.include_router(accounts.router)
 app.include_router(wishes.router)
 app.include_router(authenticator.router)
+app.include_router(visit.router)
 
 app.add_middleware(
     CORSMiddleware,
@@ -42,9 +43,8 @@ async def get_user(
 @app.get("/token")
 async def get_by_cookie(
     request: Request,
-    account_data: dict | None = Depends(
-        authenticator.try_get_current_account_data
-    ),
+    account_data: dict
+    | None = Depends(authenticator.try_get_current_account_data),
     accounts: AccountRepo = Depends(),
     ra=Depends(authenticator.get_current_account_data),
 ) -> AccountToken:

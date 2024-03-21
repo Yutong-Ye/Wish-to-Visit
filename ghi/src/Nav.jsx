@@ -33,6 +33,12 @@ function Nav() {
                         <NavLink className="navbar-brand" to="/wishlist">
                             Wishes
                         </NavLink>
+                        <NavLink className="navbar-brand" to="/visit">
+                            Track Visits
+                        </NavLink>
+                        <NavLink className="navbar-brand" to="/visitlist">
+                            Visits
+                        </NavLink>
                         <button
                             onClick={handleLogout}
                             className="btn btn-outline-light"
