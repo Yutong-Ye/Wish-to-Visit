@@ -11,7 +11,10 @@ function VisitList() {
                 Authorization: `Bearer ${token}`,
             },
         }
-        const response = await fetch('http://localhost:8000/visit', fetchConfig)
+        const response = await fetch(
+            `${import.meta.env.VITE_API_HOST}/visit`,
+            fetchConfig
+        )
         if (response.ok) {
             const visits = await response.json()
             console.log(visits) // Log the response data

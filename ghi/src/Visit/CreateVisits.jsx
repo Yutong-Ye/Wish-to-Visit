@@ -21,7 +21,7 @@ function Visit() {
     const handleFormSubmit = async (event) => {
         event.preventDefault()
         if (!newVisit.visit_name || !newVisit.description) return
-        const createVisitUrl = `http://localhost:8000/visit`
+        const createVisitUrl = `${import.meta.env.VITE_API_HOST}/visit`
         const fetchConfig = {
             method: 'POST',
             body: JSON.stringify(newVisit),

@@ -16,12 +16,15 @@ const SignupForm = () => {
             password: password,
             email: email,
         }
-        try{
-          await register(accountData, `${import.meta.env.VITE_API_HOST}/api/accounts`)
-          e.target.reset()
-          navigate('/login')
-        } catch(error) {
-          console.error(error)
+        try {
+            await register(
+                accountData,
+                `${import.meta.env.VITE_API_HOST}/api/accounts`
+            )
+            e.target.reset()
+            navigate('/login')
+        } catch (error) {
+            console.error(error)
         }
     }
 

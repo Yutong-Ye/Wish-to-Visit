@@ -50,7 +50,7 @@ function Wishes() {
     const handleFormSubmit = async (event) => {
         event.preventDefault()
         if (!newWish.wish_name || !newWish.description) return
-        const createWishUrl = 'http://localhost:8000/wishes'
+        const createWishUrl = `${import.meta.env.VITE_API_HOST}/wishes`
         const fetchConfig = {
             method: 'POST',
             body: JSON.stringify(newWish),

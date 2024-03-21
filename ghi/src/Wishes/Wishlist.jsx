@@ -13,7 +13,7 @@ function Wishlist() {
             },
         }
         const response = await fetch(
-            'http://localhost:8000/wishes',
+            `${import.meta.env.VITE_API_HOST}/wishes`,
             fetchConfig
         )
         if (response.ok) {
@@ -25,7 +25,7 @@ function Wishlist() {
     }
 
     const handleDeleteWish = async (wishId) => {
-        const deleteWishUrl = `http://localhost:8000/wishes/${wishId}`
+        const deleteWishUrl = `${import.meta.env.VITE_API_HOST}/${wishId}`
         const fetchConfig = {
             method: 'DELETE',
             headers: {

@@ -10,8 +10,8 @@ import LoginForm from './LoginForm'
 import Wishes from './Wishes/CreateWishes'
 import WishList from './Wishes/Wishlist'
 import Counter from './Counter'
-import VisitList from './VisitList'
-import Visit from './CreateVisits'
+import VisitList from './Visit/VisitList'
+import Visit from './Visit/CreateVisits'
 import { Countries, CountryDetails, Search } from './Countries/components'
 
 export const AppContext = createContext(null)
@@ -20,7 +20,7 @@ function App() {
     const baseUrl = import.meta.env.VITE_API_HOST
 
     return (
-        <BrowserRouter>
+        <BrowserRouter baseUrl={baseUrl}>
             <AuthProvider baseUrl={baseUrl}>
                 <div className="container">
                     <Nav />
