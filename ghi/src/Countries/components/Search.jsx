@@ -1,5 +1,5 @@
 import { Box, Paper, Typography, IconButton } from '@mui/material'
-import { useEffect, useState, useContext } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import All from './All'
 import { fetchFromAPI } from '../assets/fetchFromAPI'

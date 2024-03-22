@@ -51,7 +51,7 @@ function Wishes() {
                                     <input
                                         type="text"
                                         name="wish_name"
-                                        value={countryDetail?.name?.common}
+                                        value={newWish.wish_name}
                                         onChange={handleInputChange}
                                         placeholder=""
                                         className="form-control"

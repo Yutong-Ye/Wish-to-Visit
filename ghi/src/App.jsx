@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { createContext } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { AuthProvider } from '@galvanize-inc/jwtdown-for-react'
@@ -55,8 +54,16 @@ function App() {
                             path="/search/:searchTerm"
                             element={<Search />}
                         />
-                        <Route exact path="/settings" element={<UserSettings />}></Route>
-                        <Route exact path="/settings/edit" element={<UserSettingsEdit />}></Route>
+                        <Route
+                            exact
+                            path="/settings"
+                            element={<UserSettings />}
+                        ></Route>
+                        <Route
+                            exact
+                            path="/settings/edit"
+                            element={<UserSettingsEdit />}
+                        ></Route>
                     </Routes>
                     <Counter />
                 </div>
