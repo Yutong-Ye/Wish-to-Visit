@@ -64,3 +64,31 @@ About if the countries should be rendered as cards in bootstrap or look into tai
 ##At least one ah-ha! moment that you had during your coding, however small
 
 Learning how to implement an API without explicit instructions.
+
+3/21/2024 - Wednesday
+
+##A list of features/issues that you worked on and who you worked with, if applicable
+
+Implemented a visit system and form. Stretch goal would be to rename it to something related to stamping a passport and change the presentation to look like a passport book.
+
+##A reflection on any design conversations that you had
+
+Should we style it more like the logo or something else?
+
+##At least one ah-ha! moment that you had during your coding, however small
+
+Attention to detail, missing or adding a comma and looking for it for five minutes. Could be worse but still annoying.
+
+3/22/2024 - Friday
+
+##A list of features/issues that you worked on and who you worked with, if applicable
+
+Been working on deployment for the past 24 hours.
+
+##A reflection on any design conversations that you had
+
+Need to manage time better in the future for time intensive processes.
+
+##At least one ah-ha! moment that you had during your coding, however small
+
+How in depth deployment can be and how everything interacts with everything else even if you don't think it does.

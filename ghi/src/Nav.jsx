@@ -58,6 +58,18 @@ function Nav() {
                         </NavLink>
                         <NavLink
                             className="navbar-brand navbar-text-black"
+                            to="/visit"
+                        >
+                            Record a Visit
+                        </NavLink>
+                        <NavLink
+                            className="navbar-brand navbar-text-black"
+                            to="/visitlist"
+                        >
+                            Passport Stamps
+                        </NavLink>
+                        <NavLink
+                            className="navbar-brand navbar-text-black"
                             to="/settings"
                         >
                             Settings

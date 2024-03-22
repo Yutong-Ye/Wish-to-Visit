@@ -62,9 +62,19 @@ The Wishlist platform is a delightful space where users can manifest their desir
     -   Sign up for an account
 -   **Login** `http://localhost:5173/login`
     -   Log in to your account
--   **MyProfile** `????`
-    -   View a list of the wishes that you have added to your profile
+-   **MyProfile** `http://localhost:5173/settings`
+    -   View your profile settings and make minor adjustments
 -   **Create Wishes Form** `http://localhost:5173/wishes`
     -   Once you submit the form to create wish, automatically directs you back to view wishlist page
 -   **View Wishlist Form** `http://localhost:5173/wishlist`
     -   View your wishlist
+-   **Create Visit Form** `http://localhost:5173/visit`
+    -   Once you submit the form to create wish, automatically directs you back to the visitlist page
+-   **View Visitlist Form** `http://localhost:5173/visitlist`
+    -   View the places you have traveled to
+-   **View List of all Countries** `http://localhost:5173/countries`
+    -   View all countries and filter them down by a keyword search or by region
+-   **View Country Detail** `http://localhost:5173/countries/:country`
+    -   View details about a specific country
+-   **View Search Results** `http://localhost:5173/search/:searchTerm`
+    -   View results of a search
