@@ -1,5 +1,5 @@
 import CountryCard from './CountryCard'
-import { Stack, Box } from '@mui/system'
+import { Stack, Box } from '@mui/material'
 import { container } from '../assets/animation'
 import { motion } from 'framer-motion'
 

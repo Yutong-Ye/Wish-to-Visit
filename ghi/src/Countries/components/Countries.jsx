@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { fetchFromAPI } from '../assets/fetchFromAPI'
-import { Stack, Box } from '@mui/system'
-import { CircularProgress } from '@mui/material'
 import { FiSearch } from 'react-icons/fi'
 import {
     FormControl,
@@ -11,6 +9,9 @@ import {
     MenuItem,
     Paper,
     Select,
+    Stack,
+    Box,
+    CircularProgress,
 } from '@mui/material'
 import All from './All'
 
