@@ -25,7 +25,9 @@ function Wishlist() {
     }
 
     const handleDeleteWish = async (wishId) => {
-        const deleteWishUrl = `${import.meta.env.VITE_API_HOST}/wishes/${wishId}`
+        const deleteWishUrl = `${
+            import.meta.env.VITE_API_HOST
+        }/wishes/${wishId}`
         const fetchConfig = {
             method: 'DELETE',
             headers: {
@@ -91,7 +93,7 @@ function Wishlist() {
                                     style={{
                                         margin: '10px',
                                         borderRadius: '15px',
-                                    }} // Soft edge style applied
+                                    }} 
                                 >
                                     {wish.picture_url && (
                                         <img

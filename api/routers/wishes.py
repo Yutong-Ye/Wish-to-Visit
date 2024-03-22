@@ -18,7 +18,7 @@ def create_wish(
     account_data: dict = Depends(authenticator.get_current_account_data),
     repo: WishRepo = Depends(),
 ):
-    return repo.create(wish)
+    return repo.create(wish, account_data['user_id'])
 
 
 @router.get("/wishes", response_model=Union[Error, List[WishOut]])
@@ -26,7 +26,7 @@ def get_all_wishes(
     repo: WishRepo = Depends(),
     account_data: dict = Depends(authenticator.get_current_account_data),
 ):
-    return repo.get_all_wishes()
+    return repo.get_all_wishes(account_data['user_id'])
 
 
 @router.get("/wishes/{wish_id}", response_model=Union[WishOut, Error])
@@ -55,3 +55,4 @@ def delete_wish(
     account_data: dict = Depends(authenticator.get_current_account_data),
 ) -> bool:
     return repo.delete(wish_id)
+

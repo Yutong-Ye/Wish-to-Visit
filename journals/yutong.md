@@ -24,19 +24,19 @@
 
 ## Week 14
 
--   # Jan 26 Mon
+-   # Feb 26 Mon
 
 *   As a group, we decided to use PostgreSQL for our database.
 
--   # Jan 27 Tue
+-   # Feb 27 Tue
 
 *   Agreed as a team to utilize Beekeeper Studio and set up the docker-compose.yaml flie.
 
--   # Jan 28 Wed
+-   # Feb 28 Wed
 
 *   Created a query set in Beekeeper Studio.
 
--   # Jan 29 thu
+-   # Feb 29 Thu
 
 *   Mod programming with user table and user autentications.
 
@@ -75,7 +75,7 @@
 -   # Mar 11th Mon
 
 *   Wishlist backend completed.
-*   Blocker: Cannot push my feature branch to GitLab.
+*   Blocker: I cannot push my feature branch to GitLab.
 
 -   # Mar 12th Tue
 

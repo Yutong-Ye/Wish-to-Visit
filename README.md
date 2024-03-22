@@ -26,10 +26,6 @@ The Wishlist platform is a delightful space where users can manifest their desir
 
 -   https://excalidraw.com/#room=a73ee2397d26aab63da9,aktQ-JqJT1lskIksYmPCPg
 
-## Install Extensions
-
--   Prettier: <https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode>
--   Black Formatter: <https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter>
 
 ## For Registered Users:
 

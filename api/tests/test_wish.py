@@ -7,14 +7,14 @@ client = TestClient(app)
 
 
 def fake_get_current_account_data():
-    return {"id": 1, "username": "testuser"}
+    return {"user_id": 1, "username": "testuser"}
 
 
 class FakeWishRepo:
     def create(self, wish: WishIn):
         return WishOut(wish_id=1, **wish.dict())
 
-    def get_all_wishes(self):
+    def get_all_wishes(self, user_id:str):
         return []
 
     def get_details(self, wish_id: int):

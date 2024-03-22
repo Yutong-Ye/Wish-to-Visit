@@ -27,7 +27,7 @@ class WishOut(BaseModel):
 
 
 class WishRepo:
-    def create(self, wish: WishIn) -> WishOut:
+    def create(self, wish: WishIn, user_id: str) -> WishOut:
         with pool.connection() as conn:
             with conn.cursor() as db:
                 db.execute(
@@ -35,17 +35,19 @@ class WishRepo:
                     INSERT INTO wish
                         (
                             wish_name,
+                            user_id,
                             description,
                             start_date,
                             end_date,
                             picture_url
                         )
                     VALUES
-                        (%s, %s, %s, %s, %s)
+                        (%s, %s, %s, %s, %s, %s)
                     RETURNING wish_id
                     """,
                     [
                         wish.wish_name,
+                        user_id,
                         wish.description,
                         wish.start_date,
                         wish.end_date,
@@ -55,7 +57,7 @@ class WishRepo:
                 id = db.fetchone()[0]
                 return WishOut(wish_id=id, **wish.dict())
 
-    def get_all_wishes(self) -> List[WishOut]:
+    def get_all_wishes(self, user_id: str) -> List[WishOut]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
@@ -64,7 +66,11 @@ class WishRepo:
                         SELECT
                             *
                         FROM wish
-                        """
+                        WHERE user_id = %s
+                        """,
+                        [
+                            user_id
+                        ]
                     )
                     return [
                         WishOut(
