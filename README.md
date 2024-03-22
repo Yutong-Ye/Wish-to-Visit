@@ -13,6 +13,7 @@ The Wishlist platform is a delightful space where users can manifest their desir
 -   User Authentication: Secure login and registration functionality to protect user accounts.
 -   Wishlist Management: Users can create, view, and delete wishes, making it easy to keep track of their goals and aspirations.
 -   Country Information: Provides users with information about various countries, enriching their wishlist experience.
+-   Interests Management: Users can add their interests on their account that are then displayed and can be edited.
 
 ## Technologies Used
 
@@ -36,10 +37,13 @@ The Wishlist platform is a delightful space where users can manifest their desir
 -   View country information and from there:
 -   Manage Wishes: Create, view, and delete wishes from your personalized list.
 -   Manage countries that the user has previously visited
+-   Manage interests: Submits interests that are then displayed
 
 ## For All Users:
 
 -   View country information.
+-   Create an account
+-   Login to account
 
 ## Project Initialization
 
@@ -63,7 +67,9 @@ The Wishlist platform is a delightful space where users can manifest their desir
 -   **Login** `http://localhost:5173/login`
     -   Log in to your account
 -   **MyProfile** `http://localhost:5173/settings`
-    -   View your profile settings and make minor adjustments
+    -   View your profile settings
+-   **Edit MyProfile** `http://localhost:5173/settings/edit`
+    -   Can edit logged in users account information
 -   **Create Wishes Form** `http://localhost:5173/wishes`
     -   Once you submit the form to create wish, automatically directs you back to view wishlist page
 -   **View Wishlist Form** `http://localhost:5173/wishlist`
@@ -78,3 +84,7 @@ The Wishlist platform is a delightful space where users can manifest their desir
     -   View details about a specific country
 -   **View Search Results** `http://localhost:5173/search/:searchTerm`
     -   View results of a search
+-   **View Interests** `http://localhost:5173/interests`
+    -   View logged in users interests
+-   **Create Interests Form** `http://localhost:5173/interests/create`
+    -   Once you submit the form to create interests, automatically directs you back to the interests view page.

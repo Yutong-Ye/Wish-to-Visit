@@ -69,3 +69,30 @@ function to show the user the page they are authorized to see.
 
 What I learned:
 I should make sure to read what the libraries I'm using can do before trying to create a solution myself.
+
+
+
+## March 18, 2024 - March 22, 2024
+
+This week, I worked on:
+
+Finished the users settings and implemented a way for the user to edit their setting with a PUT request.
+Once that was done I tried to make a pytest for it but realized I still needed to create a backend endpoint
+that doesn't involve the login or signup. I created a interests table, backend, and frontend. This allows the
+user to input their interests, hobbies, describe their perfect day, if they have children, and a picture of their pets.
+In compared to creating the authenticator it was much easier with only a few hiccups with error messages. After I created
+the interests, I created the pytest to test the interests backend and it came back successfully.
+
+What I learned:
+
+After completing a majority of this project I learned the importance of focusing on scope and what is the
+minimum requirement. Sometimes I would focus on a particular function of the project only to realize that I
+really didn't need to be working on this and it should be left for a stretch goal.
+
+
+## reflection on design
+
+If I were to reflect on the design of our site I would leave more room to be flexible and come up with more ideas
+incase one idea flops there would be more that can be picked up and implemented. I would like to work more on the
+design of the site but due to how long it took to get it functional we wanted to be 100% confident that we have a
+functional site rather than a site that looks ok but doesn't work.
