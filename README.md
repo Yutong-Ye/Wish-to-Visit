@@ -22,7 +22,8 @@ The Wishlist platform is a delightful space where users can manifest their desir
 -   Containerization: Docker for easy deployment and environment consistency.
 
 ## Wireframe
-- https://excalidraw.com/#room=a73ee2397d26aab63da9,aktQ-JqJT1lskIksYmPCPg
+
+-   https://excalidraw.com/#room=a73ee2397d26aab63da9,aktQ-JqJT1lskIksYmPCPg
 
 ## Install Extensions
 
@@ -31,8 +32,10 @@ The Wishlist platform is a delightful space where users can manifest their desir
 
 ## For Registered Users:
 
--   View country information.
+-   Edit your profile settings
+-   View country information and from there:
 -   Manage Wishes: Create, view, and delete wishes from your personalized list.
+-   Manage countries that the user has previously visited
 
 ## For All Users:
 
@@ -64,6 +67,4 @@ The Wishlist platform is a delightful space where users can manifest their desir
 -   **Create Wishes Form** `http://localhost:5173/wishes`
     -   Once you submit the form to create wish, automatically directs you back to view wishlist page
 -   **View Wishlist Form** `http://localhost:5173/wishlist`
-    -   View your wishlist  
-
-
+    -   View your wishlist
