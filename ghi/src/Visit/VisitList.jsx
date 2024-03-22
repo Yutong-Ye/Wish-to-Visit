@@ -17,10 +17,29 @@ function VisitList() {
         )
         if (response.ok) {
             const visits = await response.json()
-            console.log(visits) // Log the response data
-            setVisits(visits || []) // Set to an empty array if data.wishes is undefined
+            setVisits(visits || [])
         } else {
-            console.error('Failed to fetch wishes')
+            console.error('Failed to fetch past visits')
+        }
+    }
+
+    const handleDeleteVisit = async (visitId) => {
+        const deleteVisitUrl = `${
+            import.meta.env.VITE_API_HOST
+        }/visit/${visitId}`
+        const fetchConfig = {
+            method: 'DELETE',
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        }
+
+        const response = await fetch(deleteVisitUrl, fetchConfig)
+        if (response.ok) {
+            console.log('Visit deleted successfully')
+            getVisits()
+        } else {
+            console.error('Failed to delete the visit')
         }
     }
 
@@ -49,27 +68,23 @@ function VisitList() {
                                     {visits &&
                                         visits.map((visit) => {
                                             return (
-                                                <tr key={visit.id}>
+                                                <tr key={visit.visit_id}>
                                                     <td>{visit.visit_name}</td>
                                                     <td>{visit.description}</td>
                                                     <td>{visit.start_date}</td>
                                                     <td>{visit.end_date}</td>
-                                                    <td>
-                                                        {visit.picture_url && (
-                                                            <img
-                                                                src={
-                                                                    visit.picture_url
-                                                                }
-                                                                alt={`Image of ${visit.visit_name}`}
-                                                                style={{
-                                                                    maxWidth:
-                                                                        '100px',
-                                                                    maxHeight:
-                                                                        '100px',
-                                                                }}
-                                                            />
-                                                        )}
-                                                    </td>
+                                                    <div className="card-footer">
+                                                        <button
+                                                            className="btn btn-danger"
+                                                            onClick={() =>
+                                                                handleDeleteVisit(
+                                                                    visit.visit_id
+                                                                )
+                                                            }
+                                                        >
+                                                            Delete
+                                                        </button>
+                                                    </div>
                                                 </tr>
                                             )
                                         })}
