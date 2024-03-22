@@ -8,6 +8,9 @@ import SignupForm from './SignupForm'
 import LoginForm from './LoginForm'
 import Wishes from './Wishes/CreateWishes'
 import WishList from './Wishes/Wishlist'
+import InterestList from './Interests/InterestList'
+import CreateInterests from './Interests/CreateInterests'
+import EditInterests from './Interests/EditInterests'
 import Counter from './Counter'
 import VisitList from './Visit/VisitList'
 import Visit from './Visit/CreateVisits'
@@ -54,16 +57,12 @@ function App() {
                             path="/search/:searchTerm"
                             element={<Search />}
                         />
-                        <Route
-                            exact
-                            path="/settings"
-                            element={<UserSettings />}
-                        ></Route>
-                        <Route
-                            exact
-                            path="/settings/edit"
-                            element={<UserSettingsEdit />}
-                        ></Route>
+                        <Route exact path="/interests" element={<InterestList />} />
+                        <Route exact path="/interests/create" element={<CreateInterests />} />
+                        <Route path="/interests/edit/:interestId" element={<EditInterests />} />
+
+                        <Route exact path="/settings" element={<UserSettings />}></Route>
+                        <Route exact path="/settings/edit" element={<UserSettingsEdit />}></Route>
                     </Routes>
                     <Counter />
                 </div>

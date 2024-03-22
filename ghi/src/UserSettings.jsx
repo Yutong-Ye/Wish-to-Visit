@@ -37,7 +37,7 @@ const UserSettings = () => {
         };
 
         fetchUserData();
-    }, [token]);
+    }, [token]); // Depend on token to re-run this effect when token changes
 
     return (
         <div>

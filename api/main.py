@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Depends, HTTPException, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 import os
-from routers import users, accounts, wishes, visit
+from routers import users, accounts, wishes, visit, interests
 from authenticator import authenticator
 from queries.accounts import (
     AccountRepo,
@@ -17,6 +17,7 @@ app.include_router(accounts.router)
 app.include_router(wishes.router)
 app.include_router(authenticator.router)
 app.include_router(visit.router)
+app.include_router(interests.router)
 
 app.add_middleware(
     CORSMiddleware,

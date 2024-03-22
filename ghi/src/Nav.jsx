@@ -70,6 +70,12 @@ function Nav() {
                         </NavLink>
                         <NavLink
                             className="navbar-brand navbar-text-black"
+                            to="/interests"
+                        >
+                            Interests
+                        </NavLink>
+                        <NavLink
+                            className="navbar-brand navbar-text-black"
                             to="/settings"
                         >
                             Settings
