@@ -14,7 +14,7 @@ class FakeWishRepo:
     def create(self, wish: WishIn):
         return WishOut(wish_id=1, **wish.dict())
 
-    def get_all_wishes(self, user_id:str):
+    def get_all_wishes(self, user_id: str):
         return []
 
     def get_details(self, wish_id: int):

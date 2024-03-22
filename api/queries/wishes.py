@@ -68,9 +68,7 @@ class WishRepo:
                         FROM wish
                         WHERE user_id = %s
                         """,
-                        [
-                            user_id
-                        ]
+                        [user_id],
                     )
                     return [
                         WishOut(
