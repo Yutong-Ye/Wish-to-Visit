@@ -22,6 +22,9 @@ The Wishlist platform is a delightful space where users can manifest their desir
 -   Database: PostgreSQL for reliable and efficient data storage.
 -   Containerization: Docker for easy deployment and environment consistency.
 
+## API Endpoints
+- [API Endpoints](./docs/apiendpoints.md)  
+
 ## Wireframe
 
 -   https://excalidraw.com/#room=a73ee2397d26aab63da9,aktQ-JqJT1lskIksYmPCPg
@@ -30,8 +33,8 @@ The Wishlist platform is a delightful space where users can manifest their desir
 ## For Registered Users:
 
 -   Edit your profile settings
--   View country information and from there:
--   Manage Wishes: Create, view, and delete wishes from your personalized list.
+-   View country information and from there
+-   Manage Wishes: Create, view, and delete wishes from your personalized list
 -   Manage countries that the user has previously visited
 -   Manage interests: Submits interests that are then displayed
 
@@ -45,7 +48,7 @@ The Wishlist platform is a delightful space where users can manifest their desir
 
 -   Start by cloning the repository, navigate to https://gitlab.com/sry-wtv/wish-to-visit
 -   Enter the project directory by navigating to it.
--   Set up a persistent Docker volume using the command docker volume create ???wtv.
+-   Set up a persistent Docker volume using the command docker volume wtv.
 -   Construct the Docker environment by executing docker compose build.
 -   Initiate the application with the command docker compose up.
 
