@@ -15,7 +15,7 @@ Input:
   "end_date": "2024-02-20",
   "picture_url": "string"
 }
-
+```
 Output:
 ```json
 {
@@ -44,7 +44,7 @@ Input:
   "children": false,
   "pet_picture_url": "string"
 }
-
+```
 Output:
 ```json
 {
@@ -75,7 +75,7 @@ Input:
   "end_date": "2024-01-02",
   "picture_url": "string"
 }
-
+```
 Output:
 ```json
 {

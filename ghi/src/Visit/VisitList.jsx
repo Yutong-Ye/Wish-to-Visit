@@ -4,6 +4,7 @@ import useToken from '@galvanize-inc/jwtdown-for-react'
 function VisitList() {
     const { token } = useToken()
     const [visits, setVisits] = useState([])
+    const [backgroundImage, setBackgroundImage] = useState('')
 
     const getVisits = async () => {
         const fetchConfig = {
@@ -43,59 +44,103 @@ function VisitList() {
         }
     }
 
+    const fetchRandomImage = async () => {
+        const apiKey =
+            'Yt9YBDUeyPvTAqQEm61VBAcrf0I2w8DnPULji6ePjC0C0OToRvsPK9S5'
+        const randomPage = Math.floor(Math.random() * 100) + 1
+        const url = `https://api.pexels.com/v1/search?query=nature&per_page=1&page=${randomPage}`
+
+        try {
+            const response = await fetch(url, {
+                headers: {
+                    Authorization: apiKey,
+                },
+            })
+
+            if (response.ok) {
+                const data = await response.json()
+                setBackgroundImage(data.photos[0].src.large)
+            }
+        } catch (error) {
+            console.error('Error fetching image from Pexels:', error)
+        }
+    }
+
     useEffect(() => {
         getVisits()
+        fetchRandomImage()
     }, [])
 
-    return (
-        <>
-            <div className="shadow p-4 mt-4 form-background">
-                <div className="row">
-                    <div className="offset-3 col-6">
-                        <div className="shadow p-4 mt-4">
-                            <h1>My Visited List</h1>
-                            <table className="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Visit Name</th>
-                                        <th>Description</th>
-                                        <th>Start Date</th>
-                                        <th>End Date</th>
-                                        <th>Picture</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {visits &&
-                                        visits.map((visit) => {
-                                            return (
-                                                <tr key={visit.visit_id}>
-                                                    <td>{visit.visit_name}</td>
-                                                    <td>{visit.description}</td>
-                                                    <td>{visit.start_date}</td>
-                                                    <td>{visit.end_date}</td>
-                                                    <div className="card-footer">
-                                                        <button
-                                                            className="btn btn-danger"
-                                                            onClick={() =>
-                                                                handleDeleteVisit(
-                                                                    visit.visit_id
-                                                                )
-                                                            }
-                                                        >
-                                                            Delete
-                                                        </button>
-                                                    </div>
-                                                </tr>
-                                            )
-                                        })}
-                                </tbody>
-                            </table>
-                        </div>
+return (
+    <div
+        className="wishlist-background"
+        style={{
+            backgroundImage: `url(${backgroundImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            minHeight: '100vh',
+            padding: '20px',
+        }}
+    >
+        <div className="container pt-6" style={{ padding: '20px' }}>
+            <div className="row justify-content-center">
+                <div className="col-md-30">
+                    <div className="card-columns">
+                        {visits &&
+                            visits.map((visit) => (
+                                <div
+                                    className="card transparent-card"
+                                    key={visit.visit_id}
+                                    style={{
+                                        margin: '10px',
+                                        borderRadius: '15px',
+                                    }}
+                                >
+                                    {visit.picture_url && (
+                                        <img
+                                            className="card-img-top"
+                                            src={visit.picture_url}
+                                            alt={`Image of ${visit.visit_name}`}
+                                        />
+                                    )}
+                                    <div className="card-body">
+                                        <h5 className="card-title">
+                                            {visit.visit_name}
+                                        </h5>
+                                        <p className="card-text">
+                                            {visit.description}
+                                        </p>
+                                        <p className="card-text">
+                                            <small className="text-muted">
+                                                Start: {visit.start_date}
+                                            </small>
+                                        </p>
+                                        <p className="card-text">
+                                            <small className="text-muted">
+                                                End: {visit.end_date}
+                                            </small>
+                                        </p>
+                                    </div>
+                                    <div className="card-footer">
+                                        <button
+                                            className="btn btn-danger"
+                                            onClick={() =>
+                                                handleDeleteVisit(
+                                                    visit.visit_id
+                                                )
+                                            }
+                                        >
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            ))}
                     </div>
                 </div>
             </div>
-        </>
-    )
+        </div>
+    </div>
+)
 }
 
 export default VisitList

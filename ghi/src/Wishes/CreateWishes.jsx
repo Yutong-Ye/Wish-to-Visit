@@ -5,6 +5,7 @@ import useToken from '@galvanize-inc/jwtdown-for-react'
 function Wishes() {
     const { token } = useToken()
     const navigate = useNavigate()
+
     const [newWish, setNewWish] = useState({
         wish_name: '',
         description: '',
@@ -12,6 +13,7 @@ function Wishes() {
         end_date: new Date().toISOString().slice(0, 10),
         picture_url: '',
     })
+    
     const [backgroundImage, setBackgroundImage] = useState('')
 
     useEffect(() => {
