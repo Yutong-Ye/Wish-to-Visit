@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import useToken from '@galvanize-inc/jwtdown-for-react'
-import Gallery from './Carousel/Carousel'
 
 function HomePage() {
     const { token, login } = useToken()
@@ -67,7 +66,6 @@ function HomePage() {
                     </>
                 )}
             </div>
-            <Gallery />
         </div>
     )
 }
