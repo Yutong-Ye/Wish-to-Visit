@@ -4,7 +4,14 @@ import { Link } from 'react-router-dom'
 
 const Gallery = () => {
     return (
-        <Carousel cols={2} rows={1} gap={10} autoplay={3000} loop={true}>
+        <Carousel
+            cols={2}
+            rows={1}
+            gap={10}
+            autoplay={3000}
+            loop={true}
+            hideArrow={true}
+        >
             <Carousel.Item>
                 <Link to="http://localhost:5173/countries/Greece">
                     <img
