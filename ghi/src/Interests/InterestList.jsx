@@ -6,6 +6,7 @@ function InterestList() {
     const { token } = useToken();
     const navigate = useNavigate();
     const [interests, setInterests] = useState([]);
+    const [backgroundImage, setBackgroundImage] = useState('')
 
     const getInterests = async () => {
         const fetchConfig = {
@@ -23,6 +24,31 @@ function InterestList() {
     };
 
     useEffect(() => {
+        const fetchRandomImage = async () => {
+            const apiKey =
+                'Yt9YBDUeyPvTAqQEm61VBAcrf0I2w8DnPULji6ePjC0C0OToRvsPK9S5'
+            const url =
+                'https://api.pexels.com/v1/search?query=nature&per_page=15'
+
+            try {
+                const response = await fetch(url, {
+                    headers: {
+                        Authorization: apiKey,
+                    },
+                })
+
+                if (response.ok) {
+                    const data = await response.json()
+                    const randomIndex = Math.floor(
+                        Math.random() * data.photos.length
+                    )
+                    setBackgroundImage(data.photos[randomIndex].src.landscape)
+                }
+            } catch (error) {
+                console.error('Error fetching image from Pexels:', error)
+            }
+        }
+        fetchRandomImage();
         getInterests();
     }, []);
 
@@ -40,7 +66,29 @@ function InterestList() {
     }
 
     return (
-        <div style={{ padding: '20px' }}>
+        <div
+            style={{
+                backgroundImage: `url(${backgroundImage})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                minHeight: '100vh',
+                display: 'flex',
+                alignItems: 'flex-start',
+                justifyContent: 'center',
+                paddingTop: '20px',
+            }}
+        >
+            <div
+                style={{
+                    textAlign: 'center',
+                    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                    padding: '40px',
+                    borderRadius: '10px',
+                    width: '50%',
+                    maxWidth: '600px',
+                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                }}
+            >
             <h2>User Interests</h2>
             {interests.map((interest, index) => (
                 <div key={index} style={{ marginBottom: '20px' }}>
@@ -49,14 +97,15 @@ function InterestList() {
                     <p>Perfect Day Description: {interest.perfect_day_description}</p>
                     <p>Children: {interest.children ? 'Yes' : 'No'}</p>
                     {interest.pet_picture_url && (
-                        <div>
+                        <div >
                             <p>Pet Picture:</p>
-                            <img src={interest.pet_picture_url} alt="Pet" style={{ width: '100px', height: 'auto' }} />
+                            <img src={interest.pet_picture_url} alt="Pet" style={{ display: 'inline-block', width: '200px', height: 'auto'}} />
                         </div>
                     )}
                     <button onClick={() => handleEditInterest(interest.interest_id)}>Edit</button>
                 </div>
             ))}
+            </div>
         </div>
     );
 }

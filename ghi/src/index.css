@@ -135,3 +135,52 @@ code {
     padding: 8px 16px;
     cursor: pointer;
 }
+
+
+
+.dropdown-content {
+    position: absolute;
+    right: 0; /* Align the right edge of the dropdown with the right edge of its parent */
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-item {
+    padding: 10px 20px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-item:hover {
+    background-color: #ddd;
+}
+
+.navbar-brand {
+    color: #fff; /* Adjust text color */
+    text-decoration: none; /* Remove default underline */
+    padding: 10px 15px; /* Adjust padding as needed */
+    margin: 0 5px; /* Adjust margin as needed */
+    border: 1px solid transparent; /* Add transparent border */
+    border-radius: 5px; /* Round the edges of the box */
+    transition: border-color 0.3s ease; /* Smooth transition for border color change */
+}
+
+.navbar-brand:hover {
+    border-color: #000; /* Change border color on hover */
+}
+
+
+/* Add a background color to the body */
+body {
+    background-color: #F8F8FF;
+    margin: 0;
+    padding: 0;
+}
+
+/* Add a background color and some padding to the navbar */
+.custom-navbar {
+    background-color: #94BE72; /* Light blue background */
+    border-bottom: 1px solid black; /* Black line at the bottom */
+}

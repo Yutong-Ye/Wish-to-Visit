@@ -88,9 +88,9 @@ return (
             backgroundPosition: 'center',
             minHeight: '100vh',
             display: 'flex',
-            alignItems: 'flex-start', // Changed from 'center' to 'flex-start'
+            alignItems: 'flex-start',
             justifyContent: 'center',
-            paddingTop: '20px', // Add some padding to the top for spacing
+            paddingTop: '20px',
         }}
     >
         <div
